@@ -1,13 +1,31 @@
-export default function ShoppingItem({title, content, id, setShoppingList}){
-    const handleClick = ()=>{
-        setShoppingList((prev) => prev.filter(item => item.id !== id))
-        console.log(id)
-    }
-    return (
-        <article className="shopping-card">
-            <h3>{title}</h3>
-            <p>{content}</p>
-            <button onClick={handleClick}>Done</button>
-        </article>
-    )
+export default function ShoppingItem({
+  item,
+  onToggle,
+  onUpdateAmount,
+}) {
+  function handleAmountChange(e) {
+    const value = Number(e.target.value);
+    onUpdateAmount(item.id, value);
+  }
+
+  return (
+    <li>
+      <label>
+        <input
+          type="checkbox"
+          checked={item.bought}
+          onChange={() => onToggle(item.id)}
+        />
+
+        {item.name}
+      </label>
+
+      <input
+        type="number"
+        min="1"
+        value={item.amount}
+        onChange={handleAmountChange}
+      />
+    </li>
+  );
 }
