@@ -8,6 +8,7 @@ export default function AddForm({ onAdd }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+  //hvis name eller amount er tom vil det komme en feilmelding
     if (!name || !amount) {
       setError("Du må fylle inn både navn og antall.");
       return;
@@ -22,10 +23,10 @@ export default function AddForm({ onAdd }) {
       id: Date.now(),
       name: name,
       amount: Number(amount),
-      bought: false,
+    
     };
 
-    onAdd(newItem); // ✅ RIKTIG STED
+    onAdd(newItem);
 
     setName("");
     setAmount("");
@@ -33,7 +34,8 @@ export default function AddForm({ onAdd }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="add-form">
+
       <input
         type="text"
         placeholder="Vare"
@@ -48,11 +50,12 @@ export default function AddForm({ onAdd }) {
         onChange={(e) => setAmount(e.target.value)}
       />
 
-      <button type="submit">Legg til</button>
+      <button type="submit">Legg til vare</button>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
+
     </form>
-  );
+  )
 }
 
 

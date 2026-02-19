@@ -1,31 +1,23 @@
-export default function ShoppingItem({
-  item,
-  onToggle,
-  onUpdateAmount,
-}) {
-  function handleAmountChange(e) {
-    const value = Number(e.target.value);
-    onUpdateAmount(item.id, value);
-  }
-
+function ShoppingItem({ item }) {
   return (
-    <li>
-      <label>
-        <input
-          type="checkbox"
-          checked={item.bought}
-          onChange={() => onToggle(item.id)}
-        />
-
+    <li className={"shopping-item"}>
+      
+      {/* Klikk for kjøpt */}
+      <span onClick={() => onToggle(item.id)}>
         {item.name}
-      </label>
+      </span>
 
+      {/* Endrer antall */}
       <input
         type="number"
         min="1"
         value={item.amount}
-        onChange={handleAmountChange}
+        onChange={(e) =>
+          onUpdateAmount(item.id, Number(e.target.value))
+        }
       />
     </li>
   );
 }
+
+export default ShoppingItem;
