@@ -4,6 +4,7 @@ import "./App.css";
 import AddForm from "./components/AddForm";
 import ShoppingList from "./components/ShoppingList";
 
+/* https://chatgpt.com/share/6996dd4d-e754-8001-8426-9315a2cc5338 */
 /* Brukte ChatGPT til default-varene */
 function App() {
   const [items, setItems] = useState([
