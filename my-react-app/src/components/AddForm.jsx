@@ -25,7 +25,7 @@ export default function AddForm({ onAdd }) {
       amount: Number(amount),
     
     };
-
+    /* brukte ChatGPT for å finne riktig plassering og for å rette opp error*/
     onAdd(newItem);
 
     setName("");
